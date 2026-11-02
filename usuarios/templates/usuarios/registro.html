@@ -1,0 +1,20 @@
+{% extends "usuarios/base.html" %}
+{% block titulo %}Registro | ENGELSTRÄNEN{% endblock %}
+{% block contenido %}
+<section class="formulario formulario-amplio">
+    <p class="sobre-titulo">FORMA PARTE DE LA COMUNIDAD</p>
+    <h1>Crear una cuenta</h1>
+    <p class="texto-suave">Completa tus datos. El registro crea una cuenta de cliente.</p>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <label>{{ field.label }}</label>{{ field }}
+            {% if field.help_text %}<small class="texto-suave">{{ field.help_text|safe }}</small>{% endif %}
+            {% for error in field.errors %}<small class="error">{{ error }}</small>{% endfor %}
+        {% endfor %}
+        <button class="boton ancho-boton" type="submit">Registrarme</button>
+    </form>
+    <p class="ayuda">¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a>.</p>
+    <small class="texto-suave">Debes tener 18 años o más para registrarte.</small>
+</section>
+{% endblock %}

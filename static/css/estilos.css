@@ -1,0 +1,553 @@
+:root {
+    --fondo: #17120d;
+    --panel: #241a12;
+    --dorado: #d9a441;
+    --oro-claro: #f2cf83;
+    --texto: #f5eee3;
+    --suave: #b9aa96;
+    --borde: #493521
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: Georgia, 'Times New Roman', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
+}
+
+a {
+    color: var(--oro-claro);
+    text-decoration: none
+}
+
+a:hover {
+    color: #fff
+}
+
+.barra {
+    height: auto;
+    min-height: 76px;
+    padding: 16px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--borde);
+    background: #1d160f;
+    gap: 20px
+}
+
+.marca {
+    font-size: 23px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: var(--texto)
+}
+
+.marca span {
+    color: var(--dorado);
+    margin-left: 8px
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: Arial, sans-serif;
+    font-size: 14px
+}
+
+nav a {
+    color: var(--texto)
+}
+
+.menu-usuario {
+    position: relative;
+    font-family: Arial, sans-serif
+}
+
+summary {
+    cursor: pointer;
+    list-style: none
+}
+
+.avatar-mini {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #62451d;
+    color: var(--oro-claro)
+}
+
+.desplegable {
+    position: absolute;
+    right: 0;
+    top: 35px;
+    z-index: 5;
+    min-width: 210px;
+    background: #2b2017;
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    padding: 9px;
+    box-shadow: 0 10px 25px #0008
+}
+
+.desplegable a,
+.enlace-boton {
+    display: block;
+    padding: 11px;
+    color: var(--texto);
+    width: 100%;
+    text-align: left
+}
+
+.desplegable a:hover,
+.enlace-boton:hover {
+    background: #46321e
+}
+
+.desplegable form {
+    margin: 0
+}
+
+.enlace-boton {
+    background: none;
+    border: 0;
+    font: inherit;
+    cursor: pointer
+}
+
+main {
+    flex: 1
+}
+
+.contenedor {
+    width: min(900px, 90%);
+    margin: 55px auto
+}
+
+.ancho {
+    width: 100%
+}
+
+.hero {
+    min-height: 540px;
+    padding: 100px 10%;
+    position: relative;
+    background: radial-gradient(ellipse at 75% 45%, #69451f88, transparent 48%), linear-gradient(110deg, #21170f, #302013 65%, #17120d);
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.sobre-titulo {
+    color: var(--dorado);
+    letter-spacing: 3px;
+    font: 12px Arial, sans-serif;
+    font-weight: bold
+}
+
+h1 {
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.08;
+    margin: 15px 0 20px
+}
+
+h1 span {
+    color: var(--dorado)
+}
+
+.hero-texto {
+    max-width: 540px;
+    color: var(--suave);
+    font: 17px/1.7 Arial, sans-serif
+}
+
+.acciones {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 22px
+}
+
+.boton {
+    display: inline-block;
+    border: 1px solid var(--dorado);
+    background: var(--dorado);
+    color: #21170f;
+    padding: 14px 22px;
+    border-radius: 4px;
+    font: bold 14px Arial, sans-serif;
+    cursor: pointer;
+    text-align: center
+}
+
+.boton:hover {
+    background: var(--oro-claro);
+    color: #21170f
+}
+
+.boton-secundario {
+    background: transparent;
+    color: var(--oro-claro)
+}
+
+.boton-pequeno {
+    padding: 10px 15px
+}
+
+.sello {
+    position: absolute;
+    right: 11%;
+    bottom: 65px;
+    border: 1px solid var(--dorado);
+    border-radius: 50%;
+    width: 88px;
+    height: 88px;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    color: var(--dorado);
+    font-size: 24px
+}
+
+.sello small {
+    font: 7px Arial, sans-serif
+}
+
+.seccion {
+    padding: 65px 8%;
+    text-align: center
+}
+
+.seccion h2 {
+    font-size: 30px
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 30px;
+    text-align: left
+}
+
+.tarjeta,
+.panel,
+.formulario {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 28px
+}
+
+.tarjeta p,
+.panel p {
+    color: var(--suave);
+    font: 14px/1.6 Arial, sans-serif
+}
+
+.icono {
+    font-size: 27px;
+    color: var(--dorado)
+}
+
+.tarjeta h3 {
+    color: var(--oro-claro)
+}
+
+.formulario {
+    width: min(480px, 100%);
+    margin: 45px auto
+}
+
+.formulario-amplio {
+    width: min(600px, 100%)
+}
+
+.formulario h1,
+.panel h1 {
+    font-size: 38px
+}
+
+form label {
+    display: block;
+    margin: 17px 0 7px;
+    color: var(--oro-claro);
+    font: 13px Arial, sans-serif
+}
+
+.campo {
+    width: 100%;
+    padding: 12px;
+    background: #17120d;
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+    color: var(--texto);
+    font: 15px Arial, sans-serif
+}
+
+.campo:focus {
+    outline: 1px solid var(--dorado)
+}
+
+.ancho-boton {
+    width: 100%;
+    margin-top: 24px
+}
+
+.ayuda,
+.texto-suave {
+    color: var(--suave);
+    font: 13px/1.6 Arial, sans-serif
+}
+
+.error,
+.errores {
+    display: block;
+    color: #ff9a85;
+    margin-top: 6px;
+    font: 13px Arial, sans-serif
+}
+
+.panel {
+    max-width: 720px;
+    margin: 40px auto
+}
+
+.avatar-grande {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #62451d;
+    color: var(--oro-claro);
+    display: grid;
+    place-items: center;
+    font-size: 45px
+}
+
+.datos {
+    margin: 25px 0
+}
+
+.datos p {
+    border-bottom: 1px solid var(--borde);
+    padding: 9px 0
+}
+
+.datos b {
+    color: var(--oro-claro)
+}
+
+.mensajes {
+    width: min(900px, 90%);
+    margin: 15px auto
+}
+
+.mensaje {
+    padding: 12px;
+    background: #263a28;
+    border: 1px solid #496c4b;
+    border-radius: 5px;
+    color: #d5f0d4;
+    font: 14px Arial, sans-serif
+}
+
+footer {
+    text-align: center;
+    padding: 25px 10px;
+    color: #8f806d;
+    border-top: 1px solid var(--borde);
+    font: 11px Arial, sans-serif;
+    letter-spacing: 1px
+}
+
+@media(max-width:650px) {
+    .barra {
+        align-items: flex-start;
+        flex-direction: column
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 14px
+    }
+
+    .hero {
+        padding: 65px 7%;
+        min-height: 490px
+    }
+
+    .sello {
+        right: 7%;
+        bottom: 25px;
+        width: 65px;
+        height: 65px;
+        font-size: 18px
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr
+    }
+
+    .seccion {
+        padding: 45px 7%
+    }
+}
+
+
+/* =====================================
+   FOTOS DE PERFIL ENGELSTRÄNEN
+===================================== */
+
+/* Foto pequeña del menú de usuario */
+.avatar-mini {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--dorado);
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Alineación del nombre y la foto */
+.menu-usuario summary {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* =========================================
+   MENÚ DE USUARIO - ENGELSTRÄNEN
+========================================= */
+
+.menu-usuario {
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+/* Botón que contiene foto y nombre */
+.menu-usuario > summary.usuario-resumen {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 13px 6px 6px;
+    border: 1px solid #65491f;
+    border-radius: 40px;
+    background: linear-gradient(145deg, #302216, #21170f);
+    color: #f5eee3;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    list-style: none;
+}
+
+/* Quitar flecha predeterminada del navegador */
+.menu-usuario > summary.usuario-resumen::-webkit-details-marker {
+    display: none;
+}
+
+.menu-usuario > summary.usuario-resumen::after {
+    content: "⌄";
+    color: #d9a441;
+    font-size: 17px;
+    margin-left: 2px;
+}
+
+/* Efecto al pasar el cursor */
+.menu-usuario > summary.usuario-resumen:hover {
+    background: #49331d;
+    border-color: #d9a441;
+    box-shadow: 0 3px 12px #d9a44122;
+}
+
+/* Fotografía de perfil */
+.avatar-mini {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #d9a441;
+    display: block;
+    background: #3b2a19;
+    box-shadow: 0 0 8px #d9a44133;
+}
+
+/* Nombre del usuario */
+.nombre-usuario {
+    color: #f5eee3;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+/* Menú desplegable */
+.menu-usuario .desplegable {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 12px);
+    z-index: 100;
+    min-width: 230px;
+    padding: 9px;
+    background: #241a12;
+    border: 1px solid #65491f;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px #0009;
+    animation: aparecer-menu 0.2s ease;
+}
+
+/* Opciones del menú */
+.menu-usuario .desplegable a,
+.menu-usuario .desplegable .enlace-boton {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 7px;
+    color: #f5eee3;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu-usuario .desplegable a:hover,
+.menu-usuario .desplegable .enlace-boton:hover {
+    background: #49331d;
+    color: #f2cf83;
+}
+
+@keyframes aparecer-menu {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Foto grande dentro del perfil */
+.avatar-grande {
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #d9a441;
+    display: block;
+    margin: 0 auto 25px;
+    background: #3b2a19;
+    box-shadow: 0 0 22px #d9a44133;
+}
+
+

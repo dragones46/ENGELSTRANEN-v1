@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}ENGELSTRÄNEN{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+
+    <header class="barra">
+        <a class="marca" href="{% url 'inicio' %}">
+            ENGELSTRÄNEN<span>✦</span>
+        </a>
+
+        <nav>
+            <a href="{% url 'inicio' %}">Inicio</a>
+
+            {% if user.is_authenticated %}
+
+            <details class="menu-usuario">
+
+                <summary class="usuario-resumen">
+                    <img src="{% static 'img/avatar-default.png' %}" alt="Foto de perfil" class="avatar-mini">
+                    <span class="nombre-usuario">
+                        {{ user.first_name|default:user.username }}
+                    </span>
+                </summary>
+
+
+                <div class="desplegable">
+
+                    <a href="{% url 'perfil' %}">Mi perfil</a>
+
+                    {% if user.es_admin %}
+                    <a href="{% url 'panel_admin' %}">
+                        Página de administrador
+                    </a>
+                    {% endif %}
+
+                    {% if user.es_productor %}
+                    <a href="{% url 'panel_productor' %}">
+                        Página de productor
+                    </a>
+                    {% endif %}
+
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="enlace-boton">
+                            Cerrar sesión
+                        </button>
+                    </form>
+
+                </div>
+            </details>
+
+            {% else %}
+
+            <a href="{% url 'login' %}">Iniciar sesión</a>
+
+            <a class="boton boton-pequeno" href="{% url 'registro' %}">
+                Registrarse
+            </a>
+
+            {% endif %}
+        </nav>
+    </header>
+
+    {% if messages %}
+    <div class="mensajes">
+        {% for message in messages %}
+        <p class="mensaje">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <main class="{% block clase_main %}contenedor{% endblock %}">
+        {% block contenido %}{% endblock %}
+    </main>
+
+    <footer>
+        ENGELSTRÄNEN · Cerveza artesanal colombiana ·
+        Disfruta responsablemente · +18
+    </footer>
+
+</body>
+
+</html>

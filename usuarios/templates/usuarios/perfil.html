@@ -1,0 +1,73 @@
+
+{% extends "usuarios/base.html" %}
+{% load static %}
+
+{% block titulo %}
+Mi perfil | ENGELSTRÄNEN
+{% endblock %}
+
+{% block contenido %}
+
+<section class="panel">
+
+    <img
+        src="{% static 'img/avatar-default.png' %}"
+        alt="Foto de perfil"
+        class="avatar-grande"
+    >
+
+    <p class="sobre-titulo">TU CUENTA</p>
+
+    <h1>Mi perfil</h1>
+
+    <div class="datos">
+
+        <p>
+            <b>Nombre de usuario:</b>
+            {{ user.username }}
+        </p>
+
+        <p>
+            <b>Nombres:</b>
+            {{ user.first_name|default:"No registrado" }}
+        </p>
+
+        <p>
+            <b>Apellidos:</b>
+            {{ user.last_name|default:"No registrados" }}
+        </p>
+
+        <p>
+            <b>Correo electrónico:</b>
+            {{ user.email }}
+        </p>
+
+        <p>
+            <b>Rol:</b>
+            {{ user.get_rol_display }}
+        </p>
+
+        <p>
+            <b>Fecha de nacimiento:</b>
+            {{ user.fecha_nacimiento|default:"No registrada" }}
+        </p>
+
+        <p>
+            <b>Teléfono:</b>
+            {{ user.telefono|default:"No registrado" }}
+        </p>
+
+        <p>
+            <b>Dirección:</b>
+            {{ user.direccion|default:"No registrada" }}
+        </p>
+
+    </div>
+
+    <a class="boton boton-secundario" href="{% url 'inicio' %}">
+        Volver al inicio
+    </a>
+
+</section>
+
+{% endblock %}
