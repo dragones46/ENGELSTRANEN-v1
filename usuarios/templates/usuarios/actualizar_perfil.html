@@ -1,0 +1,141 @@
+
+{% extends "usuarios/base.html" %}
+{% load static %}
+
+{% block titulo %}
+Editar perfil | ENGELSTRÄNEN
+{% endblock %}
+
+{% block contenido %}
+
+<section class="panel">
+
+    <p class="sobre-titulo">CONFIGURACIÓN DE CUENTA</p>
+
+    <h1>Editar mi perfil</h1>
+
+    <p>Personaliza tu información y fotografía de perfil.</p>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <div class="datos">
+
+            <!-- FOTO DE PERFIL -->
+            <div class="campo-grupo">
+
+                <label>Foto de perfil</label>
+
+                {% if user.foto_perfil %}
+                    <img
+                        src="{{ user.foto_perfil.url }}"
+                        alt="Foto actual"
+                        class="avatar-grande"
+                    >
+                {% else %}
+                    <img
+                        src="{% static 'img/avatar-default.png' %}"
+                        alt="Foto predeterminada"
+                        class="avatar-grande"
+                    >
+                {% endif %}
+
+                {{ form.foto_perfil }}
+                {{ form.foto_perfil.errors }}
+
+                <p class="ayuda">
+                    Formatos recomendados: JPG, PNG o WEBP.
+                    Tamaño máximo: 5 MB.
+                </p>
+
+            </div>
+
+            <!-- NOMBRE DE USUARIO -->
+            <div class="campo-grupo">
+
+                <label>Nombre de usuario</label>
+
+                {{ form.username }}
+                {{ form.username.errors }}
+
+            </div>
+
+            <!-- CORREO -->
+            <div class="campo-grupo">
+
+                <label>Correo electrónico</label>
+
+                {{ form.email }}
+                {{ form.email.errors }}
+
+            </div>
+
+            <!-- TELÉFONO -->
+            <div class="campo-grupo">
+
+                <label>Teléfono</label>
+
+                {{ form.telefono }}
+                {{ form.telefono.errors }}
+
+            </div>
+
+            <!-- DIRECCIÓN -->
+            <div class="campo-grupo">
+
+                <label>Dirección</label>
+
+                {{ form.direccion }}
+                {{ form.direccion.errors }}
+
+            </div>
+
+        </div>
+
+        <!-- BOTONES -->
+        <div class="acciones-perfil">
+
+            <button type="submit" class="boton">
+                Guardar cambios
+            </button>
+
+            <a
+                href="{% url 'perfil' %}"
+                class="boton boton-secundario"
+            >
+                Cancelar
+            </a>
+
+        </div>
+
+    </form>
+
+    <hr>
+
+    <!-- INFORMACIÓN PROTEGIDA -->
+    <h3>Información personal protegida</h3>
+
+    <p>
+        <b>Nombres:</b>
+        {{ user.first_name|default:"No registrados" }}
+    </p>
+
+    <p>
+        <b>Apellidos:</b>
+        {{ user.last_name|default:"No registrados" }}
+    </p>
+
+    <p>
+        <b>Fecha de nacimiento:</b>
+        {{ user.fecha_nacimiento|default:"No registrada" }}
+    </p>
+
+    <p>
+        <b>Rol:</b>
+        {{ user.get_rol_display }}
+    </p>
+
+</section>
+
+{% endblock %}

@@ -10,11 +10,20 @@ Mi perfil | ENGELSTRÄNEN
 
 <section class="panel">
 
-    <img
-        src="{% static 'img/avatar-default.png' %}"
-        alt="Foto de perfil"
-        class="avatar-grande"
-    >
+    <!-- Fotografía de perfil -->
+    {% if user.foto_perfil %}
+        <img
+            src="{{ user.foto_perfil.url }}"
+            alt="Foto de perfil"
+            class="avatar-grande"
+        >
+    {% else %}
+        <img
+            src="{% static 'img/avatar-default.png' %}"
+            alt="Foto de perfil"
+            class="avatar-grande"
+        >
+    {% endif %}
 
     <p class="sobre-titulo">TU CUENTA</p>
 
@@ -64,9 +73,24 @@ Mi perfil | ENGELSTRÄNEN
 
     </div>
 
-    <a class="boton boton-secundario" href="{% url 'inicio' %}">
-        Volver al inicio
-    </a>
+    <!-- Acciones del perfil -->
+    <div class="acciones-perfil">
+
+        <a
+            class="boton"
+            href="{% url 'actualizar_perfil' %}"
+        >
+            Editar mi perfil
+        </a>
+
+        <a
+            class="boton boton-secundario"
+            href="{% url 'inicio' %}"
+        >
+            Volver al inicio
+        </a>
+
+    </div>
 
 </section>
 

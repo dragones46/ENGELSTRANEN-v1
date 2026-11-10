@@ -64,3 +64,53 @@ class LoginForm(AuthenticationForm):
         super().__init__(*args, **kwargs)
         for campo in self.fields.values():
             campo.widget.attrs["class"] = "campo"
+
+class ActualizarPerfilForm(forms.ModelForm):
+
+    class Meta:
+        model = Usuario
+
+        fields = [
+            "foto_perfil",
+            "username",
+            "email",
+            "telefono",
+            "direccion",
+        ]
+
+        widgets = {
+            "username": forms.TextInput(attrs={
+                "class": "campo",
+                "placeholder": "Nombre de usuario"
+            }),
+
+            "email": forms.EmailInput(attrs={
+                "class": "campo",
+                "placeholder": "Correo electrónico"
+            }),
+
+            "telefono": forms.TextInput(attrs={
+                "class": "campo",
+                "placeholder": "Teléfono"
+            }),
+
+            "direccion": forms.TextInput(attrs={
+                "class": "campo",
+                "placeholder": "Dirección"
+            }),
+
+            "foto_perfil": forms.ClearableFileInput(attrs={
+                "class": "campo",
+                "accept": "image/*"
+            }),
+        }
+
+    def clean_foto_perfil(self):
+        foto = self.cleaned_data.get("foto_perfil")
+
+        if foto and foto.size > 5 * 1024 * 1024:
+            raise forms.ValidationError(
+                "La imagen no puede superar los 5 MB."
+            )
+
+        return foto

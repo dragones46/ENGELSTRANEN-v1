@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render
-from .forms import RegistroForm, LoginForm
+from .forms import *
 
 
 def rol_requerido(*roles):
@@ -58,3 +58,34 @@ def panel_admin(request):
 @rol_requerido("productor", "admin")
 def panel_productor(request):
     return render(request, "usuarios/panel_productor.html")
+
+
+
+@login_required
+def actualizar_perfil(request):
+
+    if request.method == "POST":
+        form = ActualizarPerfilForm(
+            request.POST,
+            request.FILES,
+            instance=request.user
+        )
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(
+                request,
+                "¡Tu perfil se actualizó correctamente!"
+            )
+
+            return redirect("perfil")
+
+    else:
+        form = ActualizarPerfilForm(instance=request.user)
+
+    return render(
+        request,
+        "usuarios/actualizar_perfil.html",
+        {"form": form}
+    )

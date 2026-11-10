@@ -550,4 +550,155 @@ footer {
     box-shadow: 0 0 22px #d9a44133;
 }
 
+/* =========================================
+   EDITAR PERFIL - ENGELSTRÄNEN
+========================================= */
+
+/* Contenedor de edición */
+.panel {
+    width: min(720px, 92%);
+    margin: 40px auto;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 12px 35px #0005;
+}
+
+/* Título */
+.panel h1 {
+    color: var(--oro-claro);
+    font-size: 38px;
+}
+
+/* Texto descriptivo */
+.panel > p {
+    color: var(--suave);
+    font: 14px/1.6 Arial, sans-serif;
+}
+
+/* Organización de campos */
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 22px;
+}
+
+/* Etiquetas */
+.campo-grupo label {
+    color: var(--oro-claro);
+    font: bold 13px Arial, sans-serif;
+}
+
+/* Campos de edición */
+.campo-grupo input,
+.campo-grupo textarea,
+.campo-grupo select {
+    width: 100%;
+    padding: 13px;
+    background: #17120d;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    color: var(--texto);
+    font: 14px Arial, sans-serif;
+    transition: border 0.2s ease;
+}
+
+/* Efecto al seleccionar */
+.campo-grupo input:focus,
+.campo-grupo textarea:focus {
+    outline: none;
+    border-color: var(--dorado);
+    box-shadow: 0 0 8px #d9a44133;
+}
+
+/* Selector de fotografía */
+.campo-grupo input[type="file"] {
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* Botones */
+.acciones-perfil {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* Botón secundario */
+.acciones-perfil .boton-secundario {
+    background: transparent;
+    color: var(--oro-claro);
+}
+
+/* Errores de formularios */
+.errorlist,
+.campo-grupo ul {
+    color: #ff9a85;
+    font: 13px Arial, sans-serif;
+    padding-left: 18px;
+}
+
+/* Separador */
+.panel hr {
+    border: 0;
+    border-top: 1px solid var(--borde);
+    margin: 30px 0;
+}
+
+/* Información protegida */
+.panel h3 {
+    color: var(--oro-claro);
+    font-size: 20px;
+}
+
+/* Fotografía de perfil */
+.avatar-grande {
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--dorado);
+    display: block;
+    margin: 0 auto 25px;
+    background: #3b2a19;
+    box-shadow: 0 0 22px #d9a44133;
+}
+
+/* Fotografía del menú */
+.avatar-mini {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--dorado);
+    display: block;
+}
+
+/* Botones de perfil en móvil */
+@media(max-width: 500px) {
+
+    .panel {
+        padding: 22px 17px;
+        margin: 25px auto;
+    }
+
+    .panel h1 {
+        font-size: 30px;
+    }
+
+    .acciones-perfil {
+        flex-direction: column;
+    }
+
+    .acciones-perfil .boton {
+        width: 100%;
+    }
+
+}
+
 
